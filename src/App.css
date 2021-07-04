@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+/* Card */
+:root {
+  --radius: 20px;
+}
+li {
+  list-style: none;
+}
+.cards {
+  background-image: url('./cards-bckgr.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5rem 1rem;
+  max-width: 500px;
+  min-height: 300px;
+  border-radius: var(--radius);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(40px);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+}
+
+.card img {
+  width: 50px;
+}

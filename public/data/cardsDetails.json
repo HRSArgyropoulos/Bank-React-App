@@ -1,0 +1,32 @@
+[
+    {
+        "provider": "Mastercard",
+        "bank": "Ethniki Bank",
+        "balance": "2.441,56",
+        "card-number": 5200346445433434,
+        "expiry": "12/24",
+        "card-holder": "G.A Papadopoulos",
+        "apple-pay": true,
+        "google-pay": true
+    },
+    {
+        "provider": "Visa",
+        "bank": "Piraeus Bank",
+        "balance": "0.06",
+        "card-number": 4600376849403839,
+        "expiry": "10/23",
+        "card-holder": "G Arg Papadopoulos",
+        "apple-pay": false,
+        "google-pay": false
+    },
+    {
+        "provider": "Visa",
+        "bank": "Revolut",
+        "balance": "5.334,43",
+        "card-number": 5100546748930463,
+        "expiry": "04/21",
+        "card-holder": "G A Papadopoulos",
+        "apple-pay": true,
+        "google-pay": false
+    }
+]
