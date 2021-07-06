@@ -16,16 +16,18 @@ const Cards = () => {
     getCardsInfo();
   }, []);
   return (
-    <ul className="cards">
-      {cardsInfo.length
-        ? cardsInfo.map((cardInfo) => (
-            <Card
-              key={cardInfo.index}
-              data={cardInfo}
-            />
-          ))
-        : 'Loading'}
-    </ul>
+    <div className="cards">
+      <ul>
+        {cardsInfo.length
+          ? cardsInfo.map((cardInfo) => (
+              <Card
+                key={cardInfo.index}
+                data={cardInfo}
+              />
+            ))
+          : 'Loading'}
+      </ul>
+    </div>
   );
 };
 
