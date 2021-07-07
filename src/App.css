@@ -1,3 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url(./fonts/Karla/Karla-Regular.ttf);
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +50,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Card */
+:root {
+  --radius: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+.cards {
+  background-image: radial-gradient(
+    rgb(0, 119, 255) 30%,
+    rgb(19, 19, 19)
+  );
+}
+
+.cards > ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem 1rem;
+  width: 400px;
+  height: 250px;
+  border-radius: var(--radius);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(40px);
+  color: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid rgb(42, 236, 17);
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+}
+
+.card img {
+  width: 100px;
 }
