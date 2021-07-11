@@ -14,6 +14,12 @@ const Cards = () => {
       );
       const cardsFetchInfo = await res.json();
       setCardsInfo(cardsFetchInfo);
+      // set selected card after fetch 'default' to be the middle one of all cards
+      setSelectedCard(
+        cardsFetchInfo[
+          parseInt(cardsFetchInfo.length / 2)
+        ]['card-number']
+      );
     };
     getCardsInfo();
   }, []);
