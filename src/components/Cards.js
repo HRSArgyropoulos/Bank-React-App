@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import Transactions from './Transactions';
 
 const Cards = () => {
   const [cardsInfo, setCardsInfo] = useState([]);
@@ -22,27 +23,34 @@ const Cards = () => {
   }, [selectedCard]);
 
   return (
-    <div className="cards">
-      <ul>
-        {cardsInfo.length
-          ? cardsInfo.map((cardInfo, index) => (
-              <li
-                className={
-                  'card ' +
-                  (index === selectedCard &&
-                    'selected')
-                }
-                key={index}
-                onClick={() => {
-                  console.log(index);
-                  setSelectedCard(index);
-                }}>
-                <Card data={cardInfo} />
-              </li>
-            ))
-          : 'Loading'}
-      </ul>
-    </div>
+    <>
+      <div className="cards">
+        <ul>
+          {cardsInfo.length
+            ? cardsInfo.map((cardInfo, index) => (
+                <li
+                  className={
+                    'card ' +
+                    (cardInfo['card-number'] ===
+                      selectedCard && 'selected')
+                  }
+                  key={index}
+                  onClick={() => {
+                    console.log(
+                      cardInfo['card-number']
+                    );
+                    setSelectedCard(
+                      cardInfo['card-number']
+                    );
+                  }}>
+                  <Card data={cardInfo} />
+                </li>
+              ))
+            : 'Loading'}
+        </ul>
+      </div>
+      <Transactions cardId={selectedCard} />
+    </>
   );
 };
 

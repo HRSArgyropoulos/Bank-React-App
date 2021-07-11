@@ -103,3 +103,45 @@ li {
 .card img {
   width: 100px;
 }
+
+/* Transactions */
+.card-transactions {
+  width: 60%;
+  margin: 5rem auto;
+}
+
+.card-transactions li {
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
+  min-height: 50px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 50px;
+}
+
+.card-transactions li > * {
+  margin: 0 0.5rem;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction img {
+  margin-left: 0.5rem;
+  width: 45px;
+}
+
+.transaction .price {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .card-transactions {
+    width: 85%;
+  }
+  .transaction img {
+    width: 35px;
+  }
+}
