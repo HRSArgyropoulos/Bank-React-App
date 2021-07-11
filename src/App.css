@@ -106,42 +106,38 @@ li {
 
 /* Transactions */
 .card-transactions {
-  width: 60%;
+  width: 90%;
+  max-width: 750px;
   margin: 5rem auto;
 }
 
 .card-transactions li {
   margin: 1rem 0;
-  padding: 1rem 0.5rem;
-  min-height: 50px;
+  padding: 0.7rem 0.5rem;
+  min-height: 70px;
   background-color: rgb(240, 240, 240);
   border-radius: 50px;
 }
 
-.card-transactions li > * {
-  margin: 0 0.5rem;
-}
-
 .transaction {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 75px 1fr 1.5fr 75px;
   align-items: center;
+  column-gap: 0.5rem;
+  justify-items: start;
 }
 
 .transaction img {
-  margin-left: 0.5rem;
-  width: 45px;
+  margin-left: 1rem;
+  width: 40px;
 }
 
 .transaction .price {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
 }
 
 @media (max-width: 768px) {
-  .card-transactions {
-    width: 85%;
-  }
   .transaction img {
-    width: 35px;
+    width: 30px;
   }
 }

@@ -4,8 +4,8 @@ const TransactionItem = (props) => {
   const { data, currency } = props;
   const price =
     (data.type === 'refund' ? '+' : '-') +
-    data.value +
-    currency;
+    currency +
+    data.value;
   return (
     <>
       <img
