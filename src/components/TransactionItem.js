@@ -7,7 +7,7 @@ const TransactionItem = (props) => {
     currency +
     data.value;
   return (
-    <>
+    <li className="transaction" key={data.id}>
       <img
         src={`images/companies/${data.description.replace(
           ' ',
@@ -20,7 +20,7 @@ const TransactionItem = (props) => {
       </span>
       <small className="date">{data.time}</small>
       <span className="price">{price}</span>
-    </>
+    </li>
   );
 };
 

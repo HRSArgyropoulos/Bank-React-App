@@ -26,14 +26,10 @@ const Transactions = (props) => {
   return (
     <ul className="card-transactions">
       {cardTransactions.map((transaction) => (
-        <li
-          className="transaction"
-          key={transaction.id}>
-          <TransactionItem
-            data={transaction}
-            currency={cardCurrency}
-          />
-        </li>
+        <TransactionItem
+          data={transaction}
+          currency={cardCurrency}
+        />
       ))}
     </ul>
   );
