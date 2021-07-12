@@ -27,6 +27,7 @@ const Transactions = (props) => {
     <ul className="card-transactions">
       {cardTransactions.map((transaction) => (
         <TransactionItem
+          cardId={cardId}
           data={transaction}
           currency={cardCurrency}
         />
