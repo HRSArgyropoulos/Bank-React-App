@@ -4,6 +4,7 @@ import {
   discountCalculation,
 } from '../helpers/calculations';
 import { getReceipt } from '../services/getReceipt';
+import ReceiptTable from './ReceiptTable';
 
 // the Tax and Discount calculation for the total price
 // should take place in the server but for the purpose
@@ -12,6 +13,8 @@ import { getReceipt } from '../services/getReceipt';
 const Receipt = (props) => {
   const { transactionId } = props;
   const [receipt, setReceipt] = useState({});
+  const [fetchStatus, setFetchStatus] =
+    useState('pending');
 
   useEffect(() => {
     //fetch receipt based on transaction id
@@ -63,76 +66,26 @@ const Receipt = (props) => {
           items: calculatedData,
           totalValues,
         });
-      });
+        setFetchStatus('success');
+      })
+      .catch((err) => setFetchStatus('reject'));
   }, [transactionId]);
 
   return (
     <li className="receipt">
-      <img
-        src={`images/companies/header-img/${receipt.store}.png`}
-        alt={`${receipt.store} Store`}
-      />
-      <table>
-        <thead>
-          <tr>
-            <th colSpan="1">{receipt.store}</th>
-            <td colSpan="6">{receipt.address}</td>
-          </tr>
-          <tr>
-            <th>Code</th>
-            <th>Title</th>
-            <th>Quantity</th>
-            <th>Value (before tax)*</th>
-            <th>Discount*</th>
-            <th>Tax*</th>
-            <th>Total Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {receipt.count &&
-            receipt.items.map((item) => (
-              <tr key={item.code}>
-                <td>{item.code}</td>
-                <td>{item.title}</td>
-                <td>{item.quantity}</td>
-                <td>
-                  {receipt.currency}
-                  {item.beforeTax}
-                </td>
-                <td>
-                  {receipt.currency}
-                  {item.discountValue}
-                  <br />({item.discount}%)
-                </td>
-                <td>
-                  {receipt.currency}
-                  {item.taxValue}
-                  <br />({item.taxPercent}%)
-                </td>
-                <td>
-                  {receipt.currency}
-                  {item.totalValue}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan="2">
-              <small>* values per 1 item</small>
-            </td>
-            <th
-              colSpan="4"
-              style={{ textAlign: 'right' }}>
-              Total:
-            </th>
-            <td>
-              {receipt.currency}
-              {receipt.totalValues}
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      {fetchStatus === 'pending' ? (
+        'Loading'
+      ) : fetchStatus === 'success' ? (
+        <>
+          <img
+            src={`images/companies/header-img/${receipt.store}.png`}
+            alt={`${receipt.store} Store`}
+          />
+          <ReceiptTable receiptData={receipt} />
+        </>
+      ) : (
+        'Could not load the receipt'
+      )}
     </li>
   );
 };
