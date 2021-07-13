@@ -142,3 +142,17 @@ li {
     width: 30px;
   }
 }
+
+/* Receipt */
+li.receipt {
+  padding: 1.5rem;
+}
+.receipt img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 40px 40px 0 0;
+}
+.receipt td,
+th {
+  padding: 0 0.1rem;
+}

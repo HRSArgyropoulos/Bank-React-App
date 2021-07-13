@@ -1,0 +1,26 @@
+{
+  "receipt": {
+    "items": [
+      {
+        "quantity": 1,
+        "code": 3593975,
+        "title": "Apple MacBook Air Retina MGN63GR/A (Late 2020) S.G. (M1/8 GB/256 GB)",
+        "discount": 0,
+        "beforeTax": 950.81,
+        "taxCategory": 3
+      },
+      {
+        "quantity": 2,
+        "code": 2979780,
+        "title": "Apple Apple Magic Mouse 2 Space Gray",
+        "discount": 20,
+        "beforeTax": 100.81,
+        "taxCategory": 3
+      }
+    ]
+  },
+  "count": 2,
+  "store": "Apple",
+  "address": "10955 N Tantau Ave, Cupertino, CA 95014, United States",
+  "currency": "$"
+}
