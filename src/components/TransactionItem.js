@@ -45,10 +45,7 @@ const TransactionItem = (props) => {
       </li>
       {showReceipt.show &&
         data.id === showReceipt.transactionId && (
-          <Receipt
-            transactionId={data.id}
-            storeName={data.description}
-          />
+          <Receipt transactionId={data.id} />
         )}
     </>
   );

@@ -10,47 +10,59 @@ import { getReceipt } from '../services/getReceipt';
 // of this project we will do it in the front-end
 
 const Receipt = (props) => {
-  const { transactionId, storeName } = props;
+  const { transactionId } = props;
   const [receipt, setReceipt] = useState({});
-  // save discount and tax values after calculation for each item
-  const [itemValues, setItemValues] = useState([{}]);
 
   useEffect(() => {
     //fetch receipt based on transaction id
     getReceipt(transactionId)
       .then((res) => res.json())
       .then((data) => {
-        let totalValues = 0;
-        // calculate discount and tax for each item and save state
-        for (const item of data.receipt.items) {
-          const { discountValue } =
-            discountCalculation(
-              item.beforeTax,
-              item.discount
-            );
-          const { taxValue, taxPercent } =
-            taxCalculation(
-              item.beforeTax,
-              item.taxCategory
-            );
-          const totalValue =
-            item.quantity *
-            (item.beforeTax -
-              discountValue +
-              taxValue);
-          setItemValues([
-            ...itemValues,
-            {
+        // calculate discount and tax for each item and save to state
+        const calculatedData = [];
+        // calculate total value and new receipt item data based on calculations
+        const totalValues = data.items.reduce(
+          (acc, item) => {
+            // do calculations for current item
+            const { discountValue } =
+              discountCalculation(
+                item.beforeTax,
+                item.discount
+              );
+            const { taxValue, taxPercent } =
+              taxCalculation(
+                item.beforeTax,
+                item.taxCategory
+              );
+            const totalValue =
+              item.quantity *
+              (item.beforeTax -
+                discountValue +
+                taxValue);
+
+            // preserve data key values and add calculation values to it
+            // push to new array which will be our receipt state later on
+            calculatedData.push({
+              ...item,
               discountValue,
               taxValue,
               taxPercent,
               totalValue,
-            },
-          ]);
-          // update total price of all items
-          totalValues += totalValue;
-        }
-        setReceipt({ totalValues, ...data });
+            });
+
+            // add item total value to the accumulator
+            return acc + totalValue;
+          },
+          0
+        );
+
+        // preserve other fetched object data but overwrite items object
+        // with the new array of calculated object values
+        setReceipt({
+          ...data,
+          items: calculatedData,
+          totalValues,
+        });
       });
   }, [transactionId]);
 
@@ -58,7 +70,7 @@ const Receipt = (props) => {
     <li className="receipt">
       <img
         src={`images/companies/header-img/${receipt.store}.png`}
-        alt={`${storeName} Store`}
+        alt={`${receipt.store} Store`}
       />
       <table>
         <thead>
@@ -78,34 +90,31 @@ const Receipt = (props) => {
         </thead>
         <tbody>
           {receipt.count &&
-            receipt.receipt.items.map(
-              (item, index) => (
-                <tr key={item.code}>
-                  <td>{item.code}</td>
-                  <td>{item.title}</td>
-                  <td>{item.quantity}</td>
-                  <td>
-                    {receipt.currency}
-                    {item.beforeTax}
-                  </td>
-                  <td>
-                    {receipt.currency}
-                    {itemValues[index].discountValue}
-                    <br />({item.discount}%)
-                  </td>
-                  <td>
-                    {receipt.currency}
-                    {itemValues[index].taxValue}
-                    <br />(
-                    {itemValues[index].taxPercent}%)
-                  </td>
-                  <td>
-                    {receipt.currency}
-                    {itemValues[index].totalValue}
-                  </td>
-                </tr>
-              )
-            )}
+            receipt.items.map((item) => (
+              <tr key={item.code}>
+                <td>{item.code}</td>
+                <td>{item.title}</td>
+                <td>{item.quantity}</td>
+                <td>
+                  {receipt.currency}
+                  {item.beforeTax}
+                </td>
+                <td>
+                  {receipt.currency}
+                  {item.discountValue}
+                  <br />({item.discount}%)
+                </td>
+                <td>
+                  {receipt.currency}
+                  {item.taxValue}
+                  <br />({item.taxPercent}%)
+                </td>
+                <td>
+                  {receipt.currency}
+                  {item.totalValue}
+                </td>
+              </tr>
+            ))}
         </tbody>
         <tfoot>
           <tr>
