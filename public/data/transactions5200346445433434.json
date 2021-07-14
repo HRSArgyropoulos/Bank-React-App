@@ -1,39 +1,38 @@
-
 {
-    "card-number": "5200346445433434",
-    "transactions": [
-        {
-            "id": 9,
-            "type": "purchase",
-            "category": "food-drinks",
-            "description": "Starbucks",
-            "value": "4.45",
-            "time": "01:06, Mon 15 June"
-        },
-        {
-            "id": 10,
-            "type": "purchase",
-            "category": "shopping",
-            "description": "Nike",
-            "value": "58.23",
-            "time": "21:00, Sun 14 June"
-        },
-        {
-            "id": 11,
-            "type": "refund",
-            "category": "shopping",
-            "description": "Target",
-            "value": "42.99",
-            "time": "20:03, Sun 14 June"
-        },
-        {
-            "id": 12,
-            "type": "purchase",
-            "category": "medical",
-            "description": "Rite Aid",
-            "value": "16.49",
-            "time": "22:35, Sat 13 June"
-        }
-    ],
-    "currency": "$"
+  "card-number": "5200346445433434",
+  "transactions": [
+    {
+      "id": 1,
+      "type": "purchase",
+      "category": "food-drinks",
+      "description": "Starbucks",
+      "value": "4.45",
+      "time": "01:06, Mon 15 June"
+    },
+    {
+      "id": 2,
+      "type": "purchase",
+      "category": "shopping",
+      "description": "Nike",
+      "value": "58.23",
+      "time": "21:00, Sun 14 June"
+    },
+    {
+      "id": 3,
+      "type": "refund",
+      "category": "shopping",
+      "description": "Target",
+      "value": "42.99",
+      "time": "20:03, Sun 14 June"
+    },
+    {
+      "id": 4,
+      "type": "purchase",
+      "category": "medical",
+      "description": "Rite Aid",
+      "value": "16.49",
+      "time": "22:35, Sat 13 June"
+    }
+  ],
+  "currency": "$"
 }

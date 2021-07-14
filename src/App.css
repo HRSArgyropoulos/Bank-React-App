@@ -117,6 +117,7 @@ li {
   min-height: 70px;
   background-color: rgb(240, 240, 240);
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .transaction {
@@ -140,4 +141,18 @@ li {
   .transaction img {
     width: 30px;
   }
+}
+
+/* Receipt */
+li.receipt {
+  padding: 1.5rem;
+}
+.receipt img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 40px 40px 0 0;
+}
+.receipt td,
+th {
+  padding: 0 0.1rem;
 }
