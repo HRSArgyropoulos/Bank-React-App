@@ -1,13 +1,20 @@
 import React from 'react';
 
 const ReceiptTable = (props) => {
-  const { receiptData } = props;
+  const {
+    store,
+    address,
+    items,
+    count,
+    currency,
+    totalValues,
+  } = props.receiptData;
   return (
     <table>
       <thead>
         <tr>
-          <th colSpan="1">{receiptData.store}</th>
-          <td colSpan="6">{receiptData.address}</td>
+          <th colSpan="1">{store}</th>
+          <td colSpan="6">{address}</td>
         </tr>
         <tr>
           <th>Code</th>
@@ -20,28 +27,28 @@ const ReceiptTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {receiptData.count &&
-          receiptData.items.map((item) => (
+        {count &&
+          items.map((item) => (
             <tr key={item.code}>
               <td>{item.code}</td>
               <td>{item.title}</td>
               <td>{item.quantity}</td>
               <td>
-                {receiptData.currency}
+                {currency}
                 {item.beforeTax}
               </td>
               <td>
-                {receiptData.currency}
+                {currency}
                 {item.discountValue}
                 <br />({item.discount}%)
               </td>
               <td>
-                {receiptData.currency}
+                {currency}
                 {item.taxValue}
                 <br />({item.taxPercent}%)
               </td>
               <td>
-                {receiptData.currency}
+                {currency}
                 {item.totalValue}
               </td>
             </tr>
@@ -58,8 +65,8 @@ const ReceiptTable = (props) => {
             Total:
           </th>
           <td>
-            {receiptData.currency}
-            {receiptData.totalValues}
+            {currency}
+            {totalValues}
           </td>
         </tr>
       </tfoot>
