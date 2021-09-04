@@ -5,9 +5,7 @@ const TransactionItem = (props) => {
   const { data, currency, cardId } = props;
 
   const price =
-    (data.type === 'refund' ? '+' : '-') +
-    currency +
-    data.value;
+    (data.type === 'refund' ? '+' : '-') + currency + data.value;
 
   const [showReceipt, setShowReceipt] = useState({
     transactionId: '',
@@ -31,22 +29,19 @@ const TransactionItem = (props) => {
           })
         }>
         <img
-          src={`images/companies/${data.description.replace(
+          src={`./images/companies/${data.description.replace(
             ' ',
             '-'
           )}.png`}
           alt={data.description}
         />
-        <span className="description">
-          {data.description}
-        </span>
+        <span className="description">{data.description}</span>
         <small className="date">{data.time}</small>
         <span className="price">{price}</span>
       </li>
-      {showReceipt.show &&
-        data.id === showReceipt.transactionId && (
-          <Receipt transactionId={data.id} />
-        )}
+      {showReceipt.show && data.id === showReceipt.transactionId && (
+        <Receipt transactionId={data.id} />
+      )}
     </>
   );
 };

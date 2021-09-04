@@ -70,7 +70,7 @@ const Receipt = (props) => {
       ) : fetchStatus === 'success' ? (
         <>
           <img
-            src={`images/companies/header-img/${receipt.store}.png`}
+            src={`./images/companies/header-img/${receipt.store}.png`}
             alt={`${receipt.store} Store`}
           />
           <ReceiptTable receiptData={receipt} />
