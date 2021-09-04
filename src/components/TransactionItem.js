@@ -29,10 +29,9 @@ const TransactionItem = (props) => {
           })
         }>
         <img
-          src={`./images/companies/${data.description.replace(
-            ' ',
-            '-'
-          )}.png`}
+          src={`./images/companies/${data.description
+            .replace(' ', '-')
+            .toLowerCase()}.png`}
           alt={data.description}
         />
         <span className="description">{data.description}</span>
